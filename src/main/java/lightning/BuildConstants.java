@@ -9,5 +9,7 @@ public final class BuildConstants {
     public static final String GIT_REVISION = "436";
     public static final String BUILD_DATE = "2026-09-17";
 
-    private BuildConstants() {}
+    private BuildConstants() {
+    }
+
 }

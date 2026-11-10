@@ -1,0 +1,15 @@
+package lightning.mixins;
+
+import lightning.shaded0.discordipc.connection.Connection;
+import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.ModifyArg;
+
+@Mixin(Connection.class)
+public class DiscordConnectionMixin {
+    @ModifyArg(method = "open", at = @At(value = "INVOKE", target = "Llightning/shaded0/discordipc/connection/WinConnection;<init>(Ljava/lang/String;Ljava/util/function/Consumer;)V"), index = 0)
+    private static String night$fixWindowsPipePrefix(String arg0) {
+        return arg0.replace("\\\\?\\pipe\\", "\\\\.\\pipe\\");
+    }
+
+}

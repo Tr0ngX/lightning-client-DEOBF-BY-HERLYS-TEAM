@@ -6,32 +6,25 @@ import lightning.utils.IMinecraft;
 import lightning.utils.NightBeacon;
 import net.minecraft.world.entity.player.Player;
 
-/**
- * Purified NightUserManager: Dead 30-second background polling thread and empty poll() stub removed.
- */
 public class NightUserManager implements IMinecraft {
-    private final Set<String> onlineUsernames = ConcurrentHashMap.newKeySet();
+    private final Set onlineUsernames;
 
     public NightUserManager() {
+        this.onlineUsernames = ConcurrentHashMap.newKeySet();
     }
 
-    public boolean isNightUser(Player player) {
-        if (player == null) {
-            return false;
-        }
-        if (mc.player != null && player.getUUID().equals(mc.player.getUUID())) {
-            return true;
-        }
-        return NightBeacon.or(player, isNightUser(player.getName().getString()));
+    public boolean isNightUser(Player arg0) {
+        if (arg0 == null) return false;
+        if (mc.player != null && arg0.getUUID().equals(mc.player.getUUID())) return true;
+        return NightBeacon.or(arg0, isNightUser(arg0.getName().getString()));
     }
 
-    public boolean isNightUser(String username) {
-        if (username == null || username.isEmpty()) {
+    public boolean isNightUser(String arg0) {
+        if ((arg0 == null) || (arg0.isEmpty())) {
             return false;
         }
-        if (mc.player != null && mc.player.getName().getString().equalsIgnoreCase(username)) {
-            return true;
-        }
-        return onlineUsernames.contains(username.toLowerCase());
+        if (mc.player != null && mc.player.getName().getString().equalsIgnoreCase(arg0)) return true;
+        return this.onlineUsernames.contains(arg0.toLowerCase());
     }
+
 }
