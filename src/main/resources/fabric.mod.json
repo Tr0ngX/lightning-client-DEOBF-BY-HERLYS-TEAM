@@ -1,0 +1,36 @@
+{
+	"schemaVersion": 1,
+	"id": "lightning",
+	"version": "Beta-loadfix2",
+	"name": "LightningClient",
+	"description": "Lightning is a Minecraft utility mod aimed at anarchy servers, giving you useful features for combat and utility.",
+	"authors": [
+		"PhatNho"
+	],
+	"contributors": [
+		"ichimarufudi",
+		"PunPunn_"
+	],
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/FabricMC/fabric-example-mod"
+	},
+	"license": "GPL-3.0",
+	"icon": "assets/lightning/icon.png",
+	"environment": "*",
+	"accessWidener": "lightning.accesswidener",
+	"entrypoints": {
+		"main": [
+			"lightning.LightningClient"
+		]
+	},
+	"mixins": [
+		"lightning.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.19.3",
+		"minecraft": ">=26.1.2",
+		"java": ">=25",
+		"fabric-api": "*"
+	}
+}
